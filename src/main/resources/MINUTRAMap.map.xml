@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-map xmlns="http://cayenne.apache.org/schema/3.0/modelMap"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://cayenne.apache.org/schema/3.0/modelMap http://cayenne.apache.org/schema/3.0/modelMap.xsd"
+	 project-version="6">
+	<property name="defaultPackage" value="com.jach.minutra.model"/>
+	<property name="defaultSchema" value="mnt"/>
+	<db-entity name="app_properties" schema="mnt">
+		<db-attribute name="environment" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="prop_key" type="VARCHAR" isMandatory="true" length="32"/>
+		<db-attribute name="prop_value" type="VARCHAR" isMandatory="true" length="64"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.app_properties_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="movements" schema="mnt">
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="detail" type="VARCHAR" isMandatory="true" length="300"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.movements_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="roles" schema="mnt">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="50"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.roles_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="summaries" schema="mnt">
+		<db-attribute name="agenda" type="VARCHAR" length="10000"/>
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="detail" type="CLOB" length="2147483647"/>
+		<db-attribute name="from_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="location" type="VARCHAR" length="500"/>
+		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="title" type="VARCHAR" isMandatory="true" length="500"/>
+		<db-attribute name="to_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.summaries_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="summary_documents" schema="mnt">
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="id_summary" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="name" type="VARCHAR" length="500"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.summary_documents_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="summary_members" schema="mnt">
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="id_summary" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.summary_members_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="summary_task_types" schema="mnt">
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.summary_task_types_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="summary_tasks" schema="mnt">
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="detail" type="VARCHAR" isMandatory="true" length="1000"/>
+		<db-attribute name="due_date" type="TIMESTAMP" length="29"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="id_summary" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="id_summary_task_type" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="is_done" type="BIT" isMandatory="true" length="1"/>
+		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.summary_tasks_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="user_roles" schema="mnt">
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="id_role" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.user_roles_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<db-entity name="users" schema="mnt">
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="email" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
+		<db-attribute name="is_enabled" type="BIT" isMandatory="true" length="1"/>
+		<db-attribute name="job_title" type="VARCHAR" length="100"/>
+		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="password" type="VARCHAR" length="128"/>
+		<db-key-generator>
+			<db-generator-type>ORACLE</db-generator-type>
+			<db-generator-name>mnt.users_id_seq</db-generator-name>
+			<db-key-cache-size>1</db-key-cache-size>
+		</db-key-generator>
+	</db-entity>
+	<obj-entity name="AppProperties" className="com.jach.minutra.model.AppProperties" dbEntityName="app_properties">
+		<obj-attribute name="environment" type="java.lang.Integer" db-attribute-path="environment"/>
+		<obj-attribute name="propKey" type="java.lang.String" db-attribute-path="prop_key"/>
+		<obj-attribute name="propValue" type="java.lang.String" db-attribute-path="prop_value"/>
+	</obj-entity>
+	<obj-entity name="Movements" className="com.jach.minutra.model.Movements" dbEntityName="movements">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="detail" type="java.lang.String" db-attribute-path="detail"/>
+	</obj-entity>
+	<obj-entity name="Roles" className="com.jach.minutra.model.Roles" dbEntityName="roles">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="Summaries" className="com.jach.minutra.model.Summaries" dbEntityName="summaries">
+		<obj-attribute name="agenda" type="java.lang.String" db-attribute-path="agenda"/>
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="detail" type="java.lang.String" db-attribute-path="detail"/>
+		<obj-attribute name="fromDate" type="java.util.Date" db-attribute-path="from_date"/>
+		<obj-attribute name="location" type="java.lang.String" db-attribute-path="location"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
+		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
+		<obj-attribute name="toDate" type="java.util.Date" db-attribute-path="to_date"/>
+	</obj-entity>
+	<obj-entity name="SummaryDocuments" className="com.jach.minutra.model.SummaryDocuments" dbEntityName="summary_documents">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="SummaryMembers" className="com.jach.minutra.model.SummaryMembers" dbEntityName="summary_members">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
+	</obj-entity>
+	<obj-entity name="SummaryTaskTypes" className="com.jach.minutra.model.SummaryTaskTypes" dbEntityName="summary_task_types">
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	</obj-entity>
+	<obj-entity name="SummaryTasks" className="com.jach.minutra.model.SummaryTasks" dbEntityName="summary_tasks">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="detail" type="java.lang.String" db-attribute-path="detail"/>
+		<obj-attribute name="dueDate" type="java.util.Date" db-attribute-path="due_date"/>
+		<obj-attribute name="isDone" type="java.lang.Boolean" db-attribute-path="is_done"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
+	</obj-entity>
+	<obj-entity name="UserRoles" className="com.jach.minutra.model.UserRoles" dbEntityName="user_roles">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
+	</obj-entity>
+	<obj-entity name="Users" className="com.jach.minutra.model.Users" dbEntityName="users">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
+		<obj-attribute name="isEnabled" type="java.lang.Boolean" db-attribute-path="is_enabled"/>
+		<obj-attribute name="jobTitle" type="java.lang.String" db-attribute-path="job_title"/>
+		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
+		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+		<obj-attribute name="password" type="java.lang.String" db-attribute-path="password"/>
+	</obj-entity>
+	<db-relationship name="toUsers" source="movements" target="users" toMany="false">
+		<db-attribute-pair source="id_user" target="id"/>
+	</db-relationship>
+	<db-relationship name="userRolesArray" source="roles" target="user_roles" toMany="true">
+		<db-attribute-pair source="id" target="id_role"/>
+	</db-relationship>
+	<db-relationship name="summaryDocumentsArray" source="summaries" target="summary_documents" toMany="true">
+		<db-attribute-pair source="id" target="id_summary"/>
+	</db-relationship>
+	<db-relationship name="summaryMembersArray" source="summaries" target="summary_members" toMany="true">
+		<db-attribute-pair source="id" target="id_summary"/>
+	</db-relationship>
+	<db-relationship name="summaryTasksArray" source="summaries" target="summary_tasks" toMany="true">
+		<db-attribute-pair source="id" target="id_summary"/>
+	</db-relationship>
+	<db-relationship name="toUsers" source="summaries" target="users" toMany="false">
+		<db-attribute-pair source="id_user" target="id"/>
+	</db-relationship>
+	<db-relationship name="toSummaries" source="summary_documents" target="summaries" toMany="false">
+		<db-attribute-pair source="id_summary" target="id"/>
+	</db-relationship>
+	<db-relationship name="toSummaries" source="summary_members" target="summaries" toMany="false">
+		<db-attribute-pair source="id_summary" target="id"/>
+	</db-relationship>
+	<db-relationship name="toUsers" source="summary_members" target="users" toMany="false">
+		<db-attribute-pair source="id_user" target="id"/>
+	</db-relationship>
+	<db-relationship name="summaryTasksArray" source="summary_task_types" target="summary_tasks" toMany="true">
+		<db-attribute-pair source="id" target="id_summary_task_type"/>
+	</db-relationship>
+	<db-relationship name="toSummaries" source="summary_tasks" target="summaries" toMany="false">
+		<db-attribute-pair source="id_summary" target="id"/>
+	</db-relationship>
+	<db-relationship name="toSummaryTaskTypes" source="summary_tasks" target="summary_task_types" toMany="false">
+		<db-attribute-pair source="id_summary_task_type" target="id"/>
+	</db-relationship>
+	<db-relationship name="toUsers" source="summary_tasks" target="users" toMany="false">
+		<db-attribute-pair source="id_user" target="id"/>
+	</db-relationship>
+	<db-relationship name="toRoles" source="user_roles" target="roles" toMany="false">
+		<db-attribute-pair source="id_role" target="id"/>
+	</db-relationship>
+	<db-relationship name="toUsers" source="user_roles" target="users" toMany="false">
+		<db-attribute-pair source="id_user" target="id"/>
+	</db-relationship>
+	<db-relationship name="movementsArray" source="users" target="movements" toMany="true">
+		<db-attribute-pair source="id" target="id_user"/>
+	</db-relationship>
+	<db-relationship name="summariesArray" source="users" target="summaries" toMany="true">
+		<db-attribute-pair source="id" target="id_user"/>
+	</db-relationship>
+	<db-relationship name="summaryMembersArray" source="users" target="summary_members" toMany="true">
+		<db-attribute-pair source="id" target="id_user"/>
+	</db-relationship>
+	<db-relationship name="summaryTasksArray" source="users" target="summary_tasks" toMany="true">
+		<db-attribute-pair source="id" target="id_user"/>
+	</db-relationship>
+	<db-relationship name="userRolesArray" source="users" target="user_roles" toMany="true">
+		<db-attribute-pair source="id" target="id_user"/>
+	</db-relationship>
+	<obj-relationship name="toUsers" source="Movements" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
+	<obj-relationship name="userRolesArray" source="Roles" target="UserRoles" deleteRule="Deny" db-relationship-path="userRolesArray"/>
+	<obj-relationship name="summaryDocumentsArray" source="Summaries" target="SummaryDocuments" deleteRule="Deny" db-relationship-path="summaryDocumentsArray"/>
+	<obj-relationship name="summaryMembersArray" source="Summaries" target="SummaryMembers" deleteRule="Deny" db-relationship-path="summaryMembersArray"/>
+	<obj-relationship name="summaryTasksArray" source="Summaries" target="SummaryTasks" deleteRule="Deny" db-relationship-path="summaryTasksArray"/>
+	<obj-relationship name="toUsers" source="Summaries" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
+	<obj-relationship name="toSummaries" source="SummaryDocuments" target="Summaries" deleteRule="Nullify" db-relationship-path="toSummaries"/>
+	<obj-relationship name="toSummaries" source="SummaryMembers" target="Summaries" deleteRule="Nullify" db-relationship-path="toSummaries"/>
+	<obj-relationship name="toUsers" source="SummaryMembers" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
+	<obj-relationship name="summaryTasksArray" source="SummaryTaskTypes" target="SummaryTasks" deleteRule="Deny" db-relationship-path="summaryTasksArray"/>
+	<obj-relationship name="toSummaries" source="SummaryTasks" target="Summaries" deleteRule="Nullify" db-relationship-path="toSummaries"/>
+	<obj-relationship name="toSummaryTaskTypes" source="SummaryTasks" target="SummaryTaskTypes" deleteRule="Nullify" db-relationship-path="toSummaryTaskTypes"/>
+	<obj-relationship name="toUsers" source="SummaryTasks" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
+	<obj-relationship name="toRoles" source="UserRoles" target="Roles" deleteRule="Nullify" db-relationship-path="toRoles"/>
+	<obj-relationship name="toUsers" source="UserRoles" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
+	<obj-relationship name="movementsArray" source="Users" target="Movements" deleteRule="Deny" db-relationship-path="movementsArray"/>
+	<obj-relationship name="summariesArray" source="Users" target="Summaries" deleteRule="Deny" db-relationship-path="summariesArray"/>
+	<obj-relationship name="summaryMembersArray" source="Users" target="SummaryMembers" deleteRule="Deny" db-relationship-path="summaryMembersArray"/>
+	<obj-relationship name="summaryTasksArray" source="Users" target="SummaryTasks" deleteRule="Deny" db-relationship-path="summaryTasksArray"/>
+	<obj-relationship name="userRolesArray" source="Users" target="UserRoles" deleteRule="Deny" db-relationship-path="userRolesArray"/>
+</data-map>
