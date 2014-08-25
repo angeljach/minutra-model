@@ -16,7 +16,7 @@ CREATE TABLE mnt.users (
   ,password VARCHAR(128)
   ,name VARCHAR(100) NOT NULL
   ,job_title VARCHAR(100) NULL
-  ,is_enabled BIT NOT NULL
+  ,is_enabled BOOLEAN NOT NULL
   ,creation_date TIMESTAMP NOT NULL DEFAULT NOW()
   ,modification_date TIMESTAMP NOT NULL DEFAULT NOW()
   ,PRIMARY KEY(id)
@@ -100,7 +100,7 @@ CREATE TABLE mnt.summary_tasks(
   ,id_summary_task_type INT NOT NULL
   ,detail VARCHAR(1000) NOT NULL
   ,due_date TIMESTAMP NULL
-  ,is_done BIT NOT NULL
+  ,is_done BOOLEAN NOT NULL
   ,creation_date TIMESTAMP NOT NULL DEFAULT NOW()
   ,modification_date TIMESTAMP NOT NULL DEFAULT NOW()
   ,PRIMARY KEY(id)

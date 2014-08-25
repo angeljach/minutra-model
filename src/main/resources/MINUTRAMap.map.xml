@@ -94,7 +94,7 @@
 		<db-attribute name="id_summary" type="INTEGER" isMandatory="true" length="10"/>
 		<db-attribute name="id_summary_task_type" type="INTEGER" isMandatory="true" length="10"/>
 		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
-		<db-attribute name="is_done" type="BIT" isMandatory="true" length="1"/>
+		<db-attribute name="is_done" type="BOOLEAN" isMandatory="true" length="1"/>
 		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
 		<db-key-generator>
 			<db-generator-type>ORACLE</db-generator-type>
@@ -118,7 +118,7 @@
 		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
 		<db-attribute name="email" type="VARCHAR" isMandatory="true" length="100"/>
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
-		<db-attribute name="is_enabled" type="BIT" isMandatory="true" length="1"/>
+		<db-attribute name="is_enabled" type="BOOLEAN" isMandatory="true" length="1"/>
 		<db-attribute name="job_title" type="VARCHAR" length="100"/>
 		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
 		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="100"/>
