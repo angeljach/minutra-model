@@ -5,10 +5,10 @@ import java.util.List;
 
 import org.apache.cayenne.CayenneDataObject;
 
+import com.jach.minutra.model.MinuteMembers;
+import com.jach.minutra.model.MinuteTasks;
+import com.jach.minutra.model.Minutes;
 import com.jach.minutra.model.Movements;
-import com.jach.minutra.model.Summaries;
-import com.jach.minutra.model.SummaryMembers;
-import com.jach.minutra.model.SummaryTasks;
 import com.jach.minutra.model.UserRoles;
 
 /**
@@ -26,10 +26,10 @@ public abstract class _Users extends CayenneDataObject {
     public static final String MODIFICATION_DATE_PROPERTY = "modificationDate";
     public static final String NAME_PROPERTY = "name";
     public static final String PASSWORD_PROPERTY = "password";
+    public static final String MINUTE_MEMBERS_ARRAY_PROPERTY = "minuteMembersArray";
+    public static final String MINUTE_TASKS_ARRAY_PROPERTY = "minuteTasksArray";
+    public static final String MINUTES_ARRAY_PROPERTY = "minutesArray";
     public static final String MOVEMENTS_ARRAY_PROPERTY = "movementsArray";
-    public static final String SUMMARIES_ARRAY_PROPERTY = "summariesArray";
-    public static final String SUMMARY_MEMBERS_ARRAY_PROPERTY = "summaryMembersArray";
-    public static final String SUMMARY_TASKS_ARRAY_PROPERTY = "summaryTasksArray";
     public static final String USER_ROLES_ARRAY_PROPERTY = "userRolesArray";
 
     public static final String ID_PK_COLUMN = "id";
@@ -83,6 +83,42 @@ public abstract class _Users extends CayenneDataObject {
         return (String)readProperty(PASSWORD_PROPERTY);
     }
 
+    public void addToMinuteMembersArray(MinuteMembers obj) {
+        addToManyTarget(MINUTE_MEMBERS_ARRAY_PROPERTY, obj, true);
+    }
+    public void removeFromMinuteMembersArray(MinuteMembers obj) {
+        removeToManyTarget(MINUTE_MEMBERS_ARRAY_PROPERTY, obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<MinuteMembers> getMinuteMembersArray() {
+        return (List<MinuteMembers>)readProperty(MINUTE_MEMBERS_ARRAY_PROPERTY);
+    }
+
+
+    public void addToMinuteTasksArray(MinuteTasks obj) {
+        addToManyTarget(MINUTE_TASKS_ARRAY_PROPERTY, obj, true);
+    }
+    public void removeFromMinuteTasksArray(MinuteTasks obj) {
+        removeToManyTarget(MINUTE_TASKS_ARRAY_PROPERTY, obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<MinuteTasks> getMinuteTasksArray() {
+        return (List<MinuteTasks>)readProperty(MINUTE_TASKS_ARRAY_PROPERTY);
+    }
+
+
+    public void addToMinutesArray(Minutes obj) {
+        addToManyTarget(MINUTES_ARRAY_PROPERTY, obj, true);
+    }
+    public void removeFromMinutesArray(Minutes obj) {
+        removeToManyTarget(MINUTES_ARRAY_PROPERTY, obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<Minutes> getMinutesArray() {
+        return (List<Minutes>)readProperty(MINUTES_ARRAY_PROPERTY);
+    }
+
+
     public void addToMovementsArray(Movements obj) {
         addToManyTarget(MOVEMENTS_ARRAY_PROPERTY, obj, true);
     }
@@ -92,42 +128,6 @@ public abstract class _Users extends CayenneDataObject {
     @SuppressWarnings("unchecked")
     public List<Movements> getMovementsArray() {
         return (List<Movements>)readProperty(MOVEMENTS_ARRAY_PROPERTY);
-    }
-
-
-    public void addToSummariesArray(Summaries obj) {
-        addToManyTarget(SUMMARIES_ARRAY_PROPERTY, obj, true);
-    }
-    public void removeFromSummariesArray(Summaries obj) {
-        removeToManyTarget(SUMMARIES_ARRAY_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<Summaries> getSummariesArray() {
-        return (List<Summaries>)readProperty(SUMMARIES_ARRAY_PROPERTY);
-    }
-
-
-    public void addToSummaryMembersArray(SummaryMembers obj) {
-        addToManyTarget(SUMMARY_MEMBERS_ARRAY_PROPERTY, obj, true);
-    }
-    public void removeFromSummaryMembersArray(SummaryMembers obj) {
-        removeToManyTarget(SUMMARY_MEMBERS_ARRAY_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<SummaryMembers> getSummaryMembersArray() {
-        return (List<SummaryMembers>)readProperty(SUMMARY_MEMBERS_ARRAY_PROPERTY);
-    }
-
-
-    public void addToSummaryTasksArray(SummaryTasks obj) {
-        addToManyTarget(SUMMARY_TASKS_ARRAY_PROPERTY, obj, true);
-    }
-    public void removeFromSummaryTasksArray(SummaryTasks obj) {
-        removeToManyTarget(SUMMARY_TASKS_ARRAY_PROPERTY, obj, true);
-    }
-    @SuppressWarnings("unchecked")
-    public List<SummaryTasks> getSummaryTasksArray() {
-        return (List<SummaryTasks>)readProperty(SUMMARY_TASKS_ARRAY_PROPERTY);
     }
 
 
