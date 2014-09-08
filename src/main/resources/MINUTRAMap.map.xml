@@ -117,12 +117,13 @@
 	<db-entity name="users" schema="mnt">
 		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
 		<db-attribute name="email" type="VARCHAR" isMandatory="true" length="100"/>
+		<db-attribute name="full_name" type="VARCHAR" isMandatory="true" length="100"/>
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
 		<db-attribute name="is_enabled" type="BIT" isMandatory="true" length="1"/>
 		<db-attribute name="job_title" type="VARCHAR" length="100"/>
 		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
-		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="100"/>
 		<db-attribute name="password" type="VARCHAR" length="128"/>
+		<db-attribute name="user_name" type="VARCHAR" isMandatory="true" length="30"/>
 		<db-key-generator>
 			<db-generator-type>ORACLE</db-generator-type>
 			<db-generator-name>mnt.users_id_seq</db-generator-name>
@@ -177,11 +178,12 @@
 	<obj-entity name="Users" className="com.jach.minutra.model.Users" dbEntityName="users">
 		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
 		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
+		<obj-attribute name="fullName" type="java.lang.String" db-attribute-path="full_name"/>
 		<obj-attribute name="isEnabled" type="java.lang.Boolean" db-attribute-path="is_enabled"/>
 		<obj-attribute name="jobTitle" type="java.lang.String" db-attribute-path="job_title"/>
 		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
-		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
 		<obj-attribute name="password" type="java.lang.String" db-attribute-path="password"/>
+		<obj-attribute name="userName" type="java.lang.String" db-attribute-path="user_name"/>
 	</obj-entity>
 	<db-relationship name="toMinutes" source="minute_documents" target="minutes" toMany="false">
 		<db-attribute-pair source="id_minute" target="id"/>

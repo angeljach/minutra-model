@@ -21,11 +21,12 @@ public abstract class _Users extends CayenneDataObject {
 
     public static final String CREATION_DATE_PROPERTY = "creationDate";
     public static final String EMAIL_PROPERTY = "email";
+    public static final String FULL_NAME_PROPERTY = "fullName";
     public static final String IS_ENABLED_PROPERTY = "isEnabled";
     public static final String JOB_TITLE_PROPERTY = "jobTitle";
     public static final String MODIFICATION_DATE_PROPERTY = "modificationDate";
-    public static final String NAME_PROPERTY = "name";
     public static final String PASSWORD_PROPERTY = "password";
+    public static final String USER_NAME_PROPERTY = "userName";
     public static final String MINUTE_MEMBERS_ARRAY_PROPERTY = "minuteMembersArray";
     public static final String MINUTE_TASKS_ARRAY_PROPERTY = "minuteTasksArray";
     public static final String MINUTES_ARRAY_PROPERTY = "minutesArray";
@@ -46,6 +47,13 @@ public abstract class _Users extends CayenneDataObject {
     }
     public String getEmail() {
         return (String)readProperty(EMAIL_PROPERTY);
+    }
+
+    public void setFullName(String fullName) {
+        writeProperty(FULL_NAME_PROPERTY, fullName);
+    }
+    public String getFullName() {
+        return (String)readProperty(FULL_NAME_PROPERTY);
     }
 
     public void setIsEnabled(Boolean isEnabled) {
@@ -69,18 +77,18 @@ public abstract class _Users extends CayenneDataObject {
         return (Date)readProperty(MODIFICATION_DATE_PROPERTY);
     }
 
-    public void setName(String name) {
-        writeProperty(NAME_PROPERTY, name);
-    }
-    public String getName() {
-        return (String)readProperty(NAME_PROPERTY);
-    }
-
     public void setPassword(String password) {
         writeProperty(PASSWORD_PROPERTY, password);
     }
     public String getPassword() {
         return (String)readProperty(PASSWORD_PROPERTY);
+    }
+
+    public void setUserName(String userName) {
+        writeProperty(USER_NAME_PROPERTY, userName);
+    }
+    public String getUserName() {
+        return (String)readProperty(USER_NAME_PROPERTY);
     }
 
     public void addToMinuteMembersArray(MinuteMembers obj) {

@@ -1,6 +1,11 @@
 CREATE SCHEMA mnt
 AUTHORIZATION rsk;
 
+/* POSTGRESQL - HELP
+   http://www.postgresql.org/docs/9.1/static/sql-altertable.html
+
+*/
+
 CREATE TABLE mnt.app_properties(
    id SERIAL NOT NULL
   ,environment int NOT NULL
@@ -13,9 +18,10 @@ ALTER TABLE mnt.app_properties OWNER TO rsk;
 
 CREATE TABLE mnt.users (
    id SERIAL NOT NULL
+  ,user_name VARCHAR(30) NOT NULL
   ,email VARCHAR(100) NOT NULL
   ,password VARCHAR(128)
-  ,name VARCHAR(100) NOT NULL
+  ,full_name VARCHAR(100) NOT NULL
   ,job_title VARCHAR(100) NULL
   ,is_enabled BOOLEAN NOT NULL
   ,creation_date TIMESTAMP NOT NULL DEFAULT NOW()
