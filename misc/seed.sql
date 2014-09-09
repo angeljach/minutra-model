@@ -17,3 +17,9 @@ insert into mnt.user_roles(id_user, id_role) values(2,1);
 insert into mnt.minutes(id_user, title, location, from_date, to_date, agenda, detail) values(
   2, 'Minuta de Prueba', 'Sala de Juntas del piso 8',
   '2014-09-09 12:00:00', '2014-09-09 13:00:00', 'La agenda de la reunión...', 'El detalle de la reunión...');
+
+insert into mnt.minute_members(id_user, id_minute) values(2, 1);
+insert into mnt.minute_members(id_user, id_minute) values(3, 1);
+insert into mnt.minute_members(id_user, id_minute) values(4, 1);
+insert into mnt.minute_members(id_user, id_minute) values(5, 1);
+insert into mnt.minute_members(id_user, id_minute) values(6, 1);
