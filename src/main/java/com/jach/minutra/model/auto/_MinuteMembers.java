@@ -16,7 +16,6 @@ import com.jach.minutra.model.Users;
 public abstract class _MinuteMembers extends CayenneDataObject {
 
     public static final String CREATION_DATE_PROPERTY = "creationDate";
-    public static final String MODIFICATION_DATE_PROPERTY = "modificationDate";
     public static final String TO_MINUTES_PROPERTY = "toMinutes";
     public static final String TO_USERS_PROPERTY = "toUsers";
 
@@ -27,13 +26,6 @@ public abstract class _MinuteMembers extends CayenneDataObject {
     }
     public Date getCreationDate() {
         return (Date)readProperty(CREATION_DATE_PROPERTY);
-    }
-
-    public void setModificationDate(Date modificationDate) {
-        writeProperty(MODIFICATION_DATE_PROPERTY, modificationDate);
-    }
-    public Date getModificationDate() {
-        return (Date)readProperty(MODIFICATION_DATE_PROPERTY);
     }
 
     public void setToMinutes(Minutes toMinutes) {

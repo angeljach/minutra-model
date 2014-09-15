@@ -92,7 +92,6 @@ CREATE TABLE mnt.minute_members(
   ,id_user INT NOT NULL
   ,id_minute INT NOT NULL
   ,creation_date TIMESTAMP NOT NULL DEFAULT NOW()
-  ,modification_date TIMESTAMP NOT NULL DEFAULT NOW()
   ,PRIMARY KEY(id)
   ,FOREIGN KEY (id_user) REFERENCES mnt.users(id) ON DELETE CASCADE
   ,FOREIGN KEY (id_minute) REFERENCES mnt.minutes(id) ON DELETE CASCADE

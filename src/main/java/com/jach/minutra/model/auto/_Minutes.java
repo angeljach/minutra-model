@@ -22,6 +22,7 @@ public abstract class _Minutes extends CayenneDataObject {
     public static final String CREATION_DATE_PROPERTY = "creationDate";
     public static final String DETAIL_PROPERTY = "detail";
     public static final String FROM_DATE_PROPERTY = "fromDate";
+    public static final String ID_PROPERTY = "id";
     public static final String LOCATION_PROPERTY = "location";
     public static final String MODIFICATION_DATE_PROPERTY = "modificationDate";
     public static final String TITLE_PROPERTY = "title";
@@ -59,6 +60,13 @@ public abstract class _Minutes extends CayenneDataObject {
     }
     public Date getFromDate() {
         return (Date)readProperty(FROM_DATE_PROPERTY);
+    }
+
+    public void setId(Integer id) {
+        writeProperty(ID_PROPERTY, id);
+    }
+    public Integer getId() {
+        return (Integer)readProperty(ID_PROPERTY);
     }
 
     public void setLocation(String location) {
