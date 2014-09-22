@@ -99,19 +99,10 @@ CREATE TABLE mnt.minute_members(
 );
 ALTER TABLE mnt.minute_members OWNER TO rsk;
 
-CREATE TABLE mnt.minute_task_types(
-   id SERIAL NOT NULL
-  ,name varchar(20) NOT NULL
-  ,PRIMARY KEY(id)
-  ,CONSTRAINT unq_mnt_mintsktp_name UNIQUE(name)
-);
-ALTER TABLE mnt.minute_task_types OWNER TO rsk;
-
 CREATE TABLE mnt.minute_tasks(
    id SERIAL NOT NULL
   ,id_user INT NOT NULL
   ,id_minute INT NOT NULL
-  ,id_minute_task_type INT NOT NULL
   ,detail VARCHAR(1000) NOT NULL
   ,due_date TIMESTAMP NULL
   ,is_done BOOLEAN NOT NULL
@@ -120,6 +111,17 @@ CREATE TABLE mnt.minute_tasks(
   ,PRIMARY KEY(id)
   ,FOREIGN KEY (id_user) REFERENCES mnt.users(id) ON DELETE CASCADE
   ,FOREIGN KEY (id_minute) REFERENCES mnt.minutes(id) ON DELETE CASCADE
-  ,FOREIGN KEY (id_minute_task_type) REFERENCES mnt.minute_task_types(id) ON DELETE CASCADE
 );
 ALTER TABLE mnt.minute_tasks OWNER TO rsk;
+
+CREATE TABLE mnt.minute_task_comments(
+   id SERIAL NOT NULL
+  ,id_minute_task INT NOT NULL
+  ,id_user INT NOT NULL
+  ,detail VARCHAR(1000) NOT NULL
+  ,creation_date TIMESTAMP NOT NULL DEFAULT NOW()
+  ,PRIMARY KEY(id)
+  ,FOREIGN KEY (id_minute_task) REFERENCES mnt.minute_tasks(id) ON DELETE CASCADE
+  ,FOREIGN KEY (id_user) REFERENCES mnt.users(id) ON DELETE CASCADE
+);
+ALTER TABLE mnt.minute_task_comments OWNER TO rsk;

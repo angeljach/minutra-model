@@ -6,6 +6,7 @@ import java.util.List;
 import org.apache.cayenne.CayenneDataObject;
 
 import com.jach.minutra.model.MinuteMembers;
+import com.jach.minutra.model.MinuteTaskComments;
 import com.jach.minutra.model.MinuteTasks;
 import com.jach.minutra.model.Minutes;
 import com.jach.minutra.model.Movements;
@@ -28,6 +29,7 @@ public abstract class _Users extends CayenneDataObject {
     public static final String PASSWORD_PROPERTY = "password";
     public static final String USER_NAME_PROPERTY = "userName";
     public static final String MINUTE_MEMBERS_ARRAY_PROPERTY = "minuteMembersArray";
+    public static final String MINUTE_TASK_COMMENTS_ARRAY_PROPERTY = "minuteTaskCommentsArray";
     public static final String MINUTE_TASKS_ARRAY_PROPERTY = "minuteTasksArray";
     public static final String MINUTES_ARRAY_PROPERTY = "minutesArray";
     public static final String MOVEMENTS_ARRAY_PROPERTY = "movementsArray";
@@ -100,6 +102,18 @@ public abstract class _Users extends CayenneDataObject {
     @SuppressWarnings("unchecked")
     public List<MinuteMembers> getMinuteMembersArray() {
         return (List<MinuteMembers>)readProperty(MINUTE_MEMBERS_ARRAY_PROPERTY);
+    }
+
+
+    public void addToMinuteTaskCommentsArray(MinuteTaskComments obj) {
+        addToManyTarget(MINUTE_TASK_COMMENTS_ARRAY_PROPERTY, obj, true);
+    }
+    public void removeFromMinuteTaskCommentsArray(MinuteTaskComments obj) {
+        removeToManyTarget(MINUTE_TASK_COMMENTS_ARRAY_PROPERTY, obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<MinuteTaskComments> getMinuteTaskCommentsArray() {
+        return (List<MinuteTaskComments>)readProperty(MINUTE_TASK_COMMENTS_ARRAY_PROPERTY);
     }
 
 

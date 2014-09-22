@@ -1,10 +1,11 @@
 package com.jach.minutra.model.auto;
 
 import java.util.Date;
+import java.util.List;
 
 import org.apache.cayenne.CayenneDataObject;
 
-import com.jach.minutra.model.MinuteTaskTypes;
+import com.jach.minutra.model.MinuteTaskComments;
 import com.jach.minutra.model.Minutes;
 import com.jach.minutra.model.Users;
 
@@ -21,7 +22,7 @@ public abstract class _MinuteTasks extends CayenneDataObject {
     public static final String DUE_DATE_PROPERTY = "dueDate";
     public static final String IS_DONE_PROPERTY = "isDone";
     public static final String MODIFICATION_DATE_PROPERTY = "modificationDate";
-    public static final String TO_MINUTE_TASK_TYPES_PROPERTY = "toMinuteTaskTypes";
+    public static final String MINUTE_TASK_COMMENTS_ARRAY_PROPERTY = "minuteTaskCommentsArray";
     public static final String TO_MINUTES_PROPERTY = "toMinutes";
     public static final String TO_USERS_PROPERTY = "toUsers";
 
@@ -62,12 +63,15 @@ public abstract class _MinuteTasks extends CayenneDataObject {
         return (Date)readProperty(MODIFICATION_DATE_PROPERTY);
     }
 
-    public void setToMinuteTaskTypes(MinuteTaskTypes toMinuteTaskTypes) {
-        setToOneTarget(TO_MINUTE_TASK_TYPES_PROPERTY, toMinuteTaskTypes, true);
+    public void addToMinuteTaskCommentsArray(MinuteTaskComments obj) {
+        addToManyTarget(MINUTE_TASK_COMMENTS_ARRAY_PROPERTY, obj, true);
     }
-
-    public MinuteTaskTypes getToMinuteTaskTypes() {
-        return (MinuteTaskTypes)readProperty(TO_MINUTE_TASK_TYPES_PROPERTY);
+    public void removeFromMinuteTaskCommentsArray(MinuteTaskComments obj) {
+        removeToManyTarget(MINUTE_TASK_COMMENTS_ARRAY_PROPERTY, obj, true);
+    }
+    @SuppressWarnings("unchecked")
+    public List<MinuteTaskComments> getMinuteTaskCommentsArray() {
+        return (List<MinuteTaskComments>)readProperty(MINUTE_TASK_COMMENTS_ARRAY_PROPERTY);
     }
 
 

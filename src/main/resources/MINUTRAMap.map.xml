@@ -39,12 +39,15 @@
 			<db-key-cache-size>1</db-key-cache-size>
 		</db-key-generator>
 	</db-entity>
-	<db-entity name="minute_task_types" schema="mnt">
+	<db-entity name="minute_task_comments" schema="mnt">
+		<db-attribute name="creation_date" type="TIMESTAMP" isMandatory="true" length="29"/>
+		<db-attribute name="detail" type="VARCHAR" isMandatory="true" length="1000"/>
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
-		<db-attribute name="name" type="VARCHAR" isMandatory="true" length="20"/>
+		<db-attribute name="id_minute_task" type="INTEGER" isMandatory="true" length="10"/>
+		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
 		<db-key-generator>
 			<db-generator-type>ORACLE</db-generator-type>
-			<db-generator-name>mnt.minute_task_types_id_seq</db-generator-name>
+			<db-generator-name>mnt.minute_task_comments_id_seq</db-generator-name>
 			<db-key-cache-size>1</db-key-cache-size>
 		</db-key-generator>
 	</db-entity>
@@ -54,7 +57,6 @@
 		<db-attribute name="due_date" type="TIMESTAMP" length="29"/>
 		<db-attribute name="id" type="INTEGER" isPrimaryKey="true" isMandatory="true" length="10"/>
 		<db-attribute name="id_minute" type="INTEGER" isMandatory="true" length="10"/>
-		<db-attribute name="id_minute_task_type" type="INTEGER" isMandatory="true" length="10"/>
 		<db-attribute name="id_user" type="INTEGER" isMandatory="true" length="10"/>
 		<db-attribute name="is_done" type="BIT" isMandatory="true" length="1"/>
 		<db-attribute name="modification_date" type="TIMESTAMP" isMandatory="true" length="29"/>
@@ -142,8 +144,9 @@
 	<obj-entity name="MinuteMembers" className="com.jach.minutra.model.MinuteMembers" dbEntityName="minute_members">
 		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
 	</obj-entity>
-	<obj-entity name="MinuteTaskTypes" className="com.jach.minutra.model.MinuteTaskTypes" dbEntityName="minute_task_types">
-		<obj-attribute name="name" type="java.lang.String" db-attribute-path="name"/>
+	<obj-entity name="MinuteTaskComments" className="com.jach.minutra.model.MinuteTaskComments" dbEntityName="minute_task_comments">
+		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
+		<obj-attribute name="detail" type="java.lang.String" db-attribute-path="detail"/>
 	</obj-entity>
 	<obj-entity name="MinuteTasks" className="com.jach.minutra.model.MinuteTasks" dbEntityName="minute_tasks">
 		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
@@ -157,7 +160,6 @@
 		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
 		<obj-attribute name="detail" type="java.lang.String" db-attribute-path="detail"/>
 		<obj-attribute name="fromDate" type="java.util.Date" db-attribute-path="from_date"/>
-		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
 		<obj-attribute name="location" type="java.lang.String" db-attribute-path="location"/>
 		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
 		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
@@ -193,11 +195,14 @@
 	<db-relationship name="toUsers" source="minute_members" target="users" toMany="false">
 		<db-attribute-pair source="id_user" target="id"/>
 	</db-relationship>
-	<db-relationship name="minuteTasksArray" source="minute_task_types" target="minute_tasks" toMany="true">
-		<db-attribute-pair source="id" target="id_minute_task_type"/>
+	<db-relationship name="toMinuteTasks" source="minute_task_comments" target="minute_tasks" toMany="false">
+		<db-attribute-pair source="id_minute_task" target="id"/>
 	</db-relationship>
-	<db-relationship name="toMinuteTaskTypes" source="minute_tasks" target="minute_task_types" toMany="false">
-		<db-attribute-pair source="id_minute_task_type" target="id"/>
+	<db-relationship name="toUsers" source="minute_task_comments" target="users" toMany="false">
+		<db-attribute-pair source="id_user" target="id"/>
+	</db-relationship>
+	<db-relationship name="minuteTaskCommentsArray" source="minute_tasks" target="minute_task_comments" toMany="true">
+		<db-attribute-pair source="id" target="id_minute_task"/>
 	</db-relationship>
 	<db-relationship name="toMinutes" source="minute_tasks" target="minutes" toMany="false">
 		<db-attribute-pair source="id_minute" target="id"/>
@@ -232,6 +237,9 @@
 	<db-relationship name="minuteMembersArray" source="users" target="minute_members" toMany="true">
 		<db-attribute-pair source="id" target="id_user"/>
 	</db-relationship>
+	<db-relationship name="minuteTaskCommentsArray" source="users" target="minute_task_comments" toMany="true">
+		<db-attribute-pair source="id" target="id_user"/>
+	</db-relationship>
 	<db-relationship name="minuteTasksArray" source="users" target="minute_tasks" toMany="true">
 		<db-attribute-pair source="id" target="id_user"/>
 	</db-relationship>
@@ -247,8 +255,9 @@
 	<obj-relationship name="toMinutes" source="MinuteDocuments" target="Minutes" deleteRule="Nullify" db-relationship-path="toMinutes"/>
 	<obj-relationship name="toMinutes" source="MinuteMembers" target="Minutes" deleteRule="Nullify" db-relationship-path="toMinutes"/>
 	<obj-relationship name="toUsers" source="MinuteMembers" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
-	<obj-relationship name="minuteTasksArray" source="MinuteTaskTypes" target="MinuteTasks" deleteRule="Deny" db-relationship-path="minuteTasksArray"/>
-	<obj-relationship name="toMinuteTaskTypes" source="MinuteTasks" target="MinuteTaskTypes" deleteRule="Nullify" db-relationship-path="toMinuteTaskTypes"/>
+	<obj-relationship name="toMinuteTasks" source="MinuteTaskComments" target="MinuteTasks" deleteRule="Nullify" db-relationship-path="toMinuteTasks"/>
+	<obj-relationship name="toUsers" source="MinuteTaskComments" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
+	<obj-relationship name="minuteTaskCommentsArray" source="MinuteTasks" target="MinuteTaskComments" deleteRule="Deny" db-relationship-path="minuteTaskCommentsArray"/>
 	<obj-relationship name="toMinutes" source="MinuteTasks" target="Minutes" deleteRule="Nullify" db-relationship-path="toMinutes"/>
 	<obj-relationship name="toUsers" source="MinuteTasks" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
 	<obj-relationship name="minuteDocumentsArray" source="Minutes" target="MinuteDocuments" deleteRule="Deny" db-relationship-path="minuteDocumentsArray"/>
@@ -260,6 +269,7 @@
 	<obj-relationship name="toRoles" source="UserRoles" target="Roles" deleteRule="Nullify" db-relationship-path="toRoles"/>
 	<obj-relationship name="toUsers" source="UserRoles" target="Users" deleteRule="Nullify" db-relationship-path="toUsers"/>
 	<obj-relationship name="minuteMembersArray" source="Users" target="MinuteMembers" deleteRule="Deny" db-relationship-path="minuteMembersArray"/>
+	<obj-relationship name="minuteTaskCommentsArray" source="Users" target="MinuteTaskComments" deleteRule="Deny" db-relationship-path="minuteTaskCommentsArray"/>
 	<obj-relationship name="minuteTasksArray" source="Users" target="MinuteTasks" deleteRule="Deny" db-relationship-path="minuteTasksArray"/>
 	<obj-relationship name="minutesArray" source="Users" target="Minutes" deleteRule="Deny" db-relationship-path="minutesArray"/>
 	<obj-relationship name="movementsArray" source="Users" target="Movements" deleteRule="Deny" db-relationship-path="movementsArray"/>
