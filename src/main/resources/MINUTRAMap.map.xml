@@ -160,6 +160,7 @@
 		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
 		<obj-attribute name="detail" type="java.lang.String" db-attribute-path="detail"/>
 		<obj-attribute name="fromDate" type="java.util.Date" db-attribute-path="from_date"/>
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
 		<obj-attribute name="location" type="java.lang.String" db-attribute-path="location"/>
 		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>
 		<obj-attribute name="title" type="java.lang.String" db-attribute-path="title"/>
@@ -180,6 +181,7 @@
 		<obj-attribute name="creationDate" type="java.util.Date" db-attribute-path="creation_date"/>
 		<obj-attribute name="email" type="java.lang.String" db-attribute-path="email"/>
 		<obj-attribute name="fullName" type="java.lang.String" db-attribute-path="full_name"/>
+		<obj-attribute name="id" type="java.lang.Integer" db-attribute-path="id"/>
 		<obj-attribute name="isEnabled" type="java.lang.Boolean" db-attribute-path="is_enabled"/>
 		<obj-attribute name="jobTitle" type="java.lang.String" db-attribute-path="job_title"/>
 		<obj-attribute name="modificationDate" type="java.util.Date" db-attribute-path="modification_date"/>

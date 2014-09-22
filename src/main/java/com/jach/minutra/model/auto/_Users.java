@@ -23,6 +23,7 @@ public abstract class _Users extends CayenneDataObject {
     public static final String CREATION_DATE_PROPERTY = "creationDate";
     public static final String EMAIL_PROPERTY = "email";
     public static final String FULL_NAME_PROPERTY = "fullName";
+    public static final String ID_PROPERTY = "id";
     public static final String IS_ENABLED_PROPERTY = "isEnabled";
     public static final String JOB_TITLE_PROPERTY = "jobTitle";
     public static final String MODIFICATION_DATE_PROPERTY = "modificationDate";
@@ -56,6 +57,13 @@ public abstract class _Users extends CayenneDataObject {
     }
     public String getFullName() {
         return (String)readProperty(FULL_NAME_PROPERTY);
+    }
+
+    public void setId(Integer id) {
+        writeProperty(ID_PROPERTY, id);
+    }
+    public Integer getId() {
+        return (Integer)readProperty(ID_PROPERTY);
     }
 
     public void setIsEnabled(Boolean isEnabled) {
