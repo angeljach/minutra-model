@@ -1,0 +1,95 @@
+REFERENCIAS:
+* ISO 31000:2009 Risk Management - Principles and guidelines
+* http://www.isacajournal-digital.org/isacajournal/2014_volume_3?pg=6&pm=2&fs=1#pg44
+http://www.isacajournal-digital.org/isacajournal/2011vol2?pg=1&pm=2&fs=1#pg20
+
+A marker of good quality risk statement is that it can answer the following questions:
+* What could happen?
+* Why could it happen?
+* Why do we care?
+
+
+Definitions:
+* Risk: Effect of uncertainty on objectives.
+* Effect: Deviation from the expected.
+* Uncertainty: State, even partial, of deficiency of information related to understanding or knowledge of an event, it's consequence, or likelihood.
+* Event: Occurrence or change of a particular set of circumstances and can have several causes. An event must have an effect on objectives.
+* Cause: Is that which gives rise to any action, phenomenon or condition.
+* Consequence: Outcome of an event affecting objectives.
+* Likelihood: Change of something happening; risk is a combination of potential events and consequences along with the associated likelihood of ocurrence. If the risk factor is 100% certain to happen, this is not a risk, but an issue. If the risk factor is impossible, it is irrelevant.
+
+
+Risk Statement: Looks like one of those:
+* [Event that has an effect on objectives] caused by [cause/s] resulting in [consequence/s].
+* [Event that has an effect on objectives] caused by [cause/s]. This may result in [consequence/s]
+Examples:
+* Customer data leakage, corruption or unavailability caused by defective system changes resulting in financial fraud losses of 1 million and ICO fine of 500k, customer churn of 6.4 %, and regulatory sanction by the Prudential Regulation Authority.
+* Loss of market share caused by eroded customer confidence in the organisation's information security resulting in net revenue reduction of 200k and bank share value reduced by 12%.
+
+If risk exceed the risk tolerance level, then we need to implement a risk response.
+
+Risk Response:
+1. Avoid
+2. Reduce/Mitigate
+3. Share/Transfer
+4. Accept
+
+Parameters for Risk Response Selection
+* Cost of Response to Reduce RIsk Within Tolerance Levels.
+* Importance of Risk.
+* Capability to Implement Response.
+* Effectiveness of Response.
+* Efficiency of the Response.
+
+Then we need to prioritise risk response options.
+
+Finally, create a risk action plan.
+
+
+
+http://www.pwc.com/en_us/us/issues/enterprise-risk-management/assets/risk_assessment_guide.pdf
+http://www.riskmanagementmonitor.com/why-risk-management-should-collaborate-with-internal-audit/
+http://www.darkreading.com/
+http://www.mega.com/en/c/resource/p/ebook/a/resource-ebook0012
+
+
+
+Risk Categories
+C = Compliance
+ * C1 : Compliance : Non-compliance with laws, regulations, or policies.
+ * C2 : Ethics and integrity : Fraudulent, ilegal, or unethical acts.
+ * C3 : Intellectual Property : Inability to enforce patents and trademark; infringment.
+ * C4 : Legal and disputes : Changing laws, liabilities and comercial disputes.
+ * C5 : Product quality : Producing off-spec products.
+ * C6 : Product safety : Unsafe products
+ * C7 : Regulatory : Changing regulations threaten competitive position.
+ * C8 : Tax : Failure to adequately support tax positions.
+O = Operational
+ * O1 : Catastrophic loss : Major natural or manmade disaster; terrorism.
+ * O2 : Customer : Failure to foollow customer preferences/needs.
+ * O3 : Efficiency : Inefficient operations.
+ * O4 : Engineering : Inability to design and manage facilities projects.
+ * O5 : Environmental : Environmental incidents or exceedances.
+ * O6 : Equipment : Plant equipment failure.
+ * O7 : Health and safety : Health and safety incidents harm employees.
+ * O8 : IT : Failure of IT systems; cyberattack.
+ * O9 : People : Lack or loss of qualified employees.
+ * O10 : Security : Security breaches at company sites.
+ * O11 : Sourcing : Lack of access to key raw materials; failure of supplier.
+ * O12 : Supply chain : Failure of transportation and logistics network.
+ * O13 : Technology : Development of new, potentially disruptive technologies.
+ * O14 : Weatheer : Prolonged, adverse weather conditions.
+R = Reporting
+ * R1 : Commodity : Variability and increasing trends in commodity prices.
+ * R2 : Credit : Failure of customers of counterparties to perform.
+ * R3 : FX : Volatility in foreign exchange rates.
+ * R4 : Interest rate : Variability in interest rates.
+ * R5 : Investment : Financial market volatility impacts investments.
+ * R6 : Process design and execution : Failure in the design and execution of key management processes.
+S = Strategic
+ * S1 : Alliance : Inefficient or ineffective alliance, joint venture, affiliation.
+ * S2 : Capital adequacy : Lack of acces to capital or liquidity.
+ * S3 : Competitive : Actions of competitors or new market entrants.
+ * S4 : Industry : Industry changes threaten industry attractiveness.
+ * S5 : Macroeconomic : Changes in broad economic conditions.
+ * S6 : Political : Adverse actions by foreign governments.
