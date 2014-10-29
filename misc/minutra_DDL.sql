@@ -6,6 +6,59 @@ AUTHORIZATION rsk;
 
 */
 
+
+/********************************* ITEM *********************************/
+CREATE TABLE riskcoco.item_values(
+   id SERIAL NOT NULL
+  ,name VARCHAR(30) NOT NULL
+  ,weight INT NOT NULL
+  ,CONSTRAINT unq_itemvalue_name UNIQUE (name)
+);
+ALTER TABLE riskcoco.item_values OWNER TO rsk;
+
+CREATE TABLE riskcoco.item_types(
+   id SERIAL NOT NULL
+  ,name VARCHAR(30) NOT NULL
+  ,ico VARCHAR(50) NULL
+  ,description VARCHAR(1000) NULL
+  ,CONSTRAINT unq_itemtype_name UNIQUE (name)
+);
+ALTER TABLE riskcoco.item_types OWNER TO rsk;
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('activity', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('process', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('project', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('product', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('service', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('asset', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('operation', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('information data', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('people', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('facility', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('functions', '', '');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('application/SW', '', 'Application or Software');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('HW', '', 'Hardware');
+INSERT INTO riskcoco.item_types(name, ico, description) VALUES('decision', '', '');
+
+CREATE TABLE riskcoco.items(
+   id SERIAL NOT NULL
+  ,id_item_type INT NOT NULL
+  ,id_item_value INT NOT NULL
+  ,name VARCHAR(100) NOT NULL
+  ,description VARCHAR(1000) NULL
+  ,CONSTRAINT unq_item_itemtype-name UNIQUE (id_item_type, name)
+);
+ALTER TABLE riskcoco.items OWNER TO rsk;
+
+FALTA TABLA THREATS
+FALTA TABLA ITEM_THREATS
+
+
+
+
+
+
+
+
 CREATE TABLE mnt.app_properties(
    id SERIAL NOT NULL
   ,environment int NOT NULL
